@@ -1,204 +1,653 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Tutorials for analysing bacterial omics data">
+      
+      
+      
         <meta name="author" content="Anna Syme, Torsten Seemann">
-        
+      
+      
         <link rel="shortcut icon" href="../../favicon.ico">
+      
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-1.6.1">
+    
+    
+      
+        <title>Differential gene expression - Sepsis Training 2016</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-56ade86843.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-4d0d3f2fbf.css">
+      
+    
+    
+      
         
-
-	<title>Differential gene expression - Sepsis Training 2016</title>
-
-        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../css/highlight.css">
-        <link href="../../css/base.css" rel="stylesheet">
-        <link href="../../css/sepsis.css" rel="stylesheet">
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
         
-    </head>
-
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../css/sepsis.css">
+    
+    
+  </head>
+  
+  
+  
+  
     <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="../..">Sepsis Training 2016</a>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <a href="../.." title="Sepsis Training 2016" class="md-icon md-icon--home md-header-nav__button">
+          </a>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  Microbial Transcriptomics
+                </span>
+              
+            
+            Differential gene expression
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
         </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            <!-- Main navigation -->
-            <ul class="nav navbar-nav">
-            
-            
-                <li >
-                    <a href="../..">Home</a>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Microbial Genomics <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
-<li >
-    <a href="../galaxy/">Starting with Galaxy</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../data-dna/">Training dataset</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../velvet/">Genome assembly with Velvet</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../spades/">Genome assembly with Spades</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../prokka/">Genome annotation</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../variants/">Basic Variant finding</a>
-</li>
-
-                    
-                        
-<li >
-    <a href="../snippy/">Variant finding</a>
-</li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced Microbial Genomics <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
-<li >
-    <a href="../pacbio/">Assembly with SMRT portal</a>
-</li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li class="dropdown active">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Microbial Transcriptomics <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                    
-                        
-<li class="active">
-    <a href="./">Differential gene expression</a>
-</li>
-
-                    
-                    </ul>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../../about/">About</a>
-                </li>
-            
-            
-            </ul>
-
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
-                        <i class="fa fa-search"></i> Search
-                    </a>
-                </li>
-                <li >
-                    <a rel="next" href="../pacbio/">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li >
-                    <a rel="prev" href="../../about/">
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <div class="md-header-nav__source">
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    
+      <i class="md-icon md-icon--home md-nav__button"></i>
+    
+    Sepsis Training 2016
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
 
-        <div class="container">
-            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
     
-        <li class="main active"><a href="#differential-gene-expression">Differential Gene Expression</a></li>
-        
-            <li><a href="#background">Background</a></li>
-        
-            <li><a href="#learning-objectives">Learning Objectives</a></li>
-        
-            <li><a href="#input-data-reads-and-reference">Input data: reads and reference</a></li>
-        
-            <li><a href="#align-reads-to-reference">Align reads to reference</a></li>
-        
-            <li><a href="#count-reads-per-gene">Count reads per gene</a></li>
-        
-            <li><a href="#dge-in-degust">DGE in Degust</a></li>
-        
-            <li><a href="#dge-in-galaxy">DGE in Galaxy</a></li>
-        
-            <li><a href="#what-next">What next?</a></li>
-        
-            <li><a href="#more-information">More information</a></li>
-        
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
     
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Microbial Genomics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Microbial Genomics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../galaxy/" title="Starting with Galaxy" class="md-nav__link">
+      Starting with Galaxy
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../data-dna/" title="Training dataset" class="md-nav__link">
+      Training dataset
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../velvet/" title="Genome assembly with Velvet" class="md-nav__link">
+      Genome assembly with Velvet
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../spades/" title="Genome assembly with Spades" class="md-nav__link">
+      Genome assembly with Spades
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../prokka/" title="Genome annotation" class="md-nav__link">
+      Genome annotation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../variants/" title="Basic Variant finding" class="md-nav__link">
+      Basic Variant finding
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../snippy/" title="Variant finding" class="md-nav__link">
+      Variant finding
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Advanced Microbial Genomics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Advanced Microbial Genomics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pacbio/" title="Assembly with SMRT portal" class="md-nav__link">
+      Assembly with SMRT portal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Microbial Transcriptomics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Microbial Transcriptomics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Differential gene expression
+      </label>
+    
+    <a href="./" title="Differential gene expression" class="md-nav__link md-nav__link--active">
+      Differential gene expression
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" title="Background" class="md-nav__link">
+    Background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" title="Learning Objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-data-reads-and-reference" title="Input data: reads and reference" class="md-nav__link">
+    Input data: reads and reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#align-reads-to-reference" title="Align reads to reference" class="md-nav__link">
+    Align reads to reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-reads-per-gene" title="Count reads per gene" class="md-nav__link">
+    Count reads per gene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dge-in-degust" title="DGE in Degust" class="md-nav__link">
+    DGE in Degust
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upload-counts-file" title="Upload counts file" class="md-nav__link">
+    Upload counts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-degust-sections" title="Overview of Degust sections" class="md-nav__link">
+    Overview of Degust sections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-gene-expression" title="Analyze gene expression" class="md-nav__link">
+    Analyze gene expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mds-plot" title="MDS plot" class="md-nav__link">
+    MDS plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-ma-plot" title="Expression - MA plot" class="md-nav__link">
+    Expression - MA plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-parallel-coordinates-and-heatmap" title="Expression - Parallel Coordinates and heatmap" class="md-nav__link">
+    Expression - Parallel Coordinates and heatmap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-of-genes" title="Table of genes" class="md-nav__link">
+    Table of genes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dge-in-galaxy" title="DGE in Galaxy" class="md-nav__link">
+    DGE in Galaxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-information" title="More information" class="md-nav__link">
+    More information
+  </a>
+  
+</li>
+      
+      
+      
     </ul>
-</div></div>
-            <div class="col-md-9" role="main">
+  
+</nav>
+    
+  </li>
 
-<h1 id="differential-gene-expression">Differential Gene Expression</h1>
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" title="Background" class="md-nav__link">
+    Background
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" title="Learning Objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-data-reads-and-reference" title="Input data: reads and reference" class="md-nav__link">
+    Input data: reads and reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#align-reads-to-reference" title="Align reads to reference" class="md-nav__link">
+    Align reads to reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#count-reads-per-gene" title="Count reads per gene" class="md-nav__link">
+    Count reads per gene
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dge-in-degust" title="DGE in Degust" class="md-nav__link">
+    DGE in Degust
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upload-counts-file" title="Upload counts file" class="md-nav__link">
+    Upload counts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-degust-sections" title="Overview of Degust sections" class="md-nav__link">
+    Overview of Degust sections
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze-gene-expression" title="Analyze gene expression" class="md-nav__link">
+    Analyze gene expression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mds-plot" title="MDS plot" class="md-nav__link">
+    MDS plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-ma-plot" title="Expression - MA plot" class="md-nav__link">
+    Expression - MA plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-parallel-coordinates-and-heatmap" title="Expression - Parallel Coordinates and heatmap" class="md-nav__link">
+    Expression - Parallel Coordinates and heatmap
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-of-genes" title="Table of genes" class="md-nav__link">
+    Table of genes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dge-in-galaxy" title="DGE in Galaxy" class="md-nav__link">
+    DGE in Galaxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-information" title="More information" class="md-nav__link">
+    More information
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="differential-gene-expression">Differential Gene Expression</h1>
 <p>This tutorial is about differential gene expression in bacteria, using Galaxy tools and Degust (web).</p>
 <!-- **FIXME:**
 - Degust to be installed on mGVL Galaxy
@@ -531,45 +980,86 @@ Alternatively, to upload a file of DGE analysis results (e.g. from Galaxy):
     - this is the change in the treatment relative to the control (FIXME: check)
 - Click <ss>Save changes</ss>.
 - Click <ss>View</ss>.
----></div>
+--->
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
         </div>
-
-        <footer class="col-md-12">
-            <hr>
-            
-            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
-        </footer>
-
-        <script src="../../js/jquery-1.10.2.min.js"></script>
-        <script src="../../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../../js/highlight.pack.js"></script>
-        <script>var base_url = '../..';</script>
-        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-        <script src="../../js/base.js"></script>
-
-        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>
-                            From here you can search these documents. Enter
-                            your search terms below.
-                        </p>
-                        <form role="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
-                            </div>
-                        </form>
-                        <div id="mkdocs-search-results"></div>
-                    </div>
-                    <div class="modal-footer">
-                    </div>
-                </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../pacbio/" title="Assembly with SMRT portal" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
-        </div>
-    </body>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Assembly with SMRT portal
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../about/" title="About" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                About
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-6b599127bc.js"></script>
+      <script>app.initialize({url:{base:"../.."}})</script>
+      
+        <script src="../../search/require.js"></script>
+      
+        <script src="../../search/search.js"></script>
+      
+    
+    
+      
+    
+  </body>
 </html>

@@ -3,8 +3,8 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,54 +12,44 @@
     
         
     <url>
-     <loc>None/modules/galaxy/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/galaxy/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/data-dna/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/data-dna/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/velvet/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/velvet/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/spades/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/spades/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/prokka/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/prokka/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/variants/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/variants/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/modules/snippy/</loc>
-     <lastmod>2017-08-15</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/modules/pacbio/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/snippy/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -68,8 +58,18 @@
     
         
     <url>
-     <loc>None/modules/dge/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/modules/pacbio/</loc>
+     <lastmod>2018-03-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/modules/dge/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -77,8 +77,8 @@
 
     
     <url>
-     <loc>None/about/</loc>
-     <lastmod>2017-08-15</lastmod>
+     <loc>/about/</loc>
+     <lastmod>2018-03-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
