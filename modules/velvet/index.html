@@ -705,10 +705,11 @@ Ask your demonstrator if you would like to know the difference between contigs a
 <li>Galaxy is now running velvet on the reads for you.</li>
 <li>Press the refresh button in the history pane to see if it has finished.</li>
 <li>
-<p>When it is finished, you will have three new files in your history.  </p>
+<p>When it is finished, you will have four new files in your history.  </p>
 <ul>
 <li>a <fn>Contigs</fn> file</li>
 <li>a <fn>Contigs stats</fn> file</li>
+<li>a <fn>LastGraph</fn> file</li>
 <li>the velvet <fn>log</fn> file</li>
 </ul>
 </li>
@@ -733,7 +734,7 @@ Ask your demonstrator if you would like to know the difference between contigs a
 </ul>
 <h2 id="collect-some-statistics-on-the-contigs">Collect some statistics on the contigs.</h2>
 <ul>
-<li>Go to <ss>Basic Tools &rarr; NGS Common Toolsets &rarr; FASTA manipulation &rarr; Fasta statistics</ss></li>
+<li>Go to <ss>NGS Common Toolsets &rarr; FASTA manipulation &rarr; Fasta statistics</ss></li>
 <li>For the required input file, choose the velvet <fn>Contigs</fn> file.</li>
 <li>Click <ss>Execute</ss>.</li>
 <li>A new file will appear called <fn>Fasta summary stats</fn></li>
@@ -774,8 +775,8 @@ Ask your demonstrator if you would like to know the difference between contigs a
 </ul>
 <h2 id="look-at-the-fasta-statistics-for-the-velvet-optimiser-contigs">Look at the fasta statistics for the Velvet Optimiser contigs</h2>
 <p>Use the Fasta Statistics tool you used earlier to summarise the Velvet Optimiser output. Examine the resulting table. What are the main differences?</p>
-<p>Have a look at the Velvet Optimiser log file, it&rsquo;s hidden. Click on the <strong>hidden</strong> link at the top of the History pane. You&rsquo;ll then need to examine it&rsquo;s STDERR output by clicking on the <strong>name of the file</strong>, then the <strong>&ldquo;i&rdquo;</strong> icon, then <strong>stderr</strong>.</p>
-<p>Can you find which <strong>k</strong> value VelvetOptimiser used for it&rsquo;s final assembly? You should also notice that it set another couple of parameters, the expected coverage and the coverage cutoff.. Any ideas what these are? See the <a href="http://www.genome.org/cgi/content/short/18/5/821">Velvet paper</a> or the <a href="https://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf">Velvet manual</a> for details on these parameters. </p>
+<p>Have a look at the Velvet Optimiser log file, it&rsquo;s hidden. Click on the <strong>hidden</strong> link at the top of the History pane. You&rsquo;ll then need to examine its STDERR output by clicking on the <strong>name of the file</strong>, then the <strong>&ldquo;i&rdquo;</strong> icon, then <strong>stderr</strong>.</p>
+<p>Can you find which <strong>k</strong> value VelvetOptimiser used for its final assembly? You should also notice that it set another couple of parameters, the expected coverage and the coverage cutoff. Any ideas what these are? See the <a href="http://www.genome.org/cgi/content/short/18/5/821">Velvet paper</a> or the <a href="https://www.ebi.ac.uk/~zerbino/velvet/Manual.pdf">Velvet manual</a> for details on these parameters. </p>
 <!-- ## What next?
 
 - [Annotate the genome using Prokka.](/modules/prokka/index.md)
